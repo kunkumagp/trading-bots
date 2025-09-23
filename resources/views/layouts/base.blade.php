@@ -58,7 +58,7 @@
                             <li class="user-header">
                                 <img src="{{ asset('adminlte/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                                 <p>
-                                    {{ Auth::user()->name ?? 'User' }} - Trading Bot Admin
+                                    {{ Auth::user()->name ?? 'User' }} - {{ Auth::user()->role ?? 'User' }}
                                     <small>Member since {{ Auth::user()->created_at->format('M Y') ?? 'Recently' }}</small>
                                 </p>
                             </li>

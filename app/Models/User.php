@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_role',
     ];
 
     /**
@@ -44,5 +45,55 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Check if user is a superadmin.
+     *
+     * @return bool
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->user_role === 'superadmin';
+    }
+
+    /**
+     * Check if user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->user_role === 'admin';
+    }
+
+    /**
+     * Check if user is a trader.
+     *
+     * @return bool
+     */
+    public function isTrader(): bool
+    {
+        return $this->user_role === 'trader';
+    }
+
+    /**
+     * Check if user is a regular user.
+     *
+     * @return bool
+     */
+    public function isUser(): bool
+    {
+        return $this->user_role === 'user';
+    }
+
+    /**
+     * Get the user role in a human-readable format.
+     *
+     * @return string
+     */
+    public function getRoleAttribute(): string
+    {
+        return ucfirst($this->user_role);
     }
 }
